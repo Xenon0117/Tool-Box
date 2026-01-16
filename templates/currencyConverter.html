@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Currency Converter{% endblock %}
+{% block heading %}Currency Converter{% endblock %}
+{% block content %}
+<main>
+  <div class="modal-dialog"> 
+    <div class="modal-content rounded-4 shadow"> 
+      <div class="modal-header p-4 pb-3 border-bottom-0 text-center"> 
+        <h1 class="fw-bold mb-0 fs-3">Convert Currency for Free</h1>  
+      </div> 
+      <div class="modal-body p-4 pt-0"> 
+        {% if data %}
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+        {% endif %}
+        <form action="{{ url_for('currency_converter') }}" method="post"> 
+          <!-- FROM -->
+          <label for="country1">From:</label>
+          <div class="form-floating">
+            <input list="countries1" class="form-control" name="country1" placeholder="e.g. Japan or JPY">
+            <datalist id="countries1">
+              {% for key, value in data.items() %}
+                <option value="{{key}} ({{value['iso_code']}}) : {{ value['currency_code'] }} - {{ value['currency_name'] }}">
+              {% endfor %}
+            </datalist>  
+          </div>
+
+          <!-- AMOUNT (smaller, under From) -->
+          <div class="amount-input-wrapper">
+            <input type="number" name="rate1" placeholder="Amount" step="0.01" min="0">
+          </div>
+
+          <!-- TO -->
+          <label for="country2">To:</label>
+          <div class="form-floating">
+            <input list="countries2" class="form-control" name="country2" placeholder="e.g. India or INR">
+            <datalist id="countries2">
+              {% for key, value in data.items() %}
+                <option value="{{key}} ({{value['iso_code']}}) : {{ value['currency_code'] }} - {{ value['currency_name'] }}">
+              {% endfor %}
+            </datalist>  
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button class="btn btn-lg rounded-3 btn-primary" type="submit">Calculate</button> 
+        </form>
+        {% endif %}
+
+        <!-- RESULT -->
+        {% if currency_info %}
+        <div class="result-card">
+          <hr class="my-3"> 
+          <h2 class="fs-5 fw-bold mb-3 text-center">Result</h2> 
+          <div class="modal-dialog"> 
+            <div class="modal-content rounded-3 shadow"> 
+              <div class="modal-body p-3 text-center"> 
+                <h5 class="mb-0">
+                  <!-- <img src="{{ url_for('static', filename='40x30/' + currency_info.country1_code + '.png') }}" alt="{{ currency_info.country1_code }}"> <br>
+                  {{ currency_info.rate1 }} {{ currency_info.currency1 }} = <br> -->
+                  <img src="{{ url_for('static', filename='40x30/' + currency_info.country2_code + '.png') }}" alt="{{ currency_info.country2_code }}"> <br>
+                  {{ currency_info.converted_rate }} {{ currency_info.currency2 }}
+                </h5> 
+              </div> 
+            </div> 
+          </div>
+        </div>
+        {% endif %}
+      </div> 
+    </div> 
+  </div>
+</main>
+{% endblock %}

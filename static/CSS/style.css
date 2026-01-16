@@ -1,0 +1,92 @@
+body {
+ background: #536976;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
+/* Center the entire modal */
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Input fields: From & To */
+.form-floating {
+  margin-bottom: 1rem;
+}
+
+.form-floating input[list] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ced4da;
+}
+
+/* Amount input (smaller, below From) */
+.amount-input-wrapper {
+  width: 60%;
+  margin: 0.5rem auto 1.5rem auto;
+}
+
+.amount-input-wrapper input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+  border-radius: 0.375rem;
+  border: 1px solid #ced4da;
+}
+
+/* Button: centered */
+.btn-primary {
+  background: #022c44;
+  border: none;
+  transition: all 0.3s ease;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-primary:hover {
+  background: #1090da;
+  transform: translateY(-2px);
+}
+
+/* Labels */
+label {
+  color: rgb(196, 116, 42);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Result section */
+.result-card {
+  margin-top: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .modal-content {
+    padding: 1rem;
+  }
+  .btn-primary {
+    width: 70%;
+  }
+  .amount-input-wrapper {
+    width: 80%;
+  }
+}

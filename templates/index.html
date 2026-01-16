@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Tool Box{% endblock %}
+{% block heading %}Tool Box{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-bg-dark mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Currency Converter</h5>
+                    <p class="card-text">Convert currencies from one country to another.</p>
+                    <a href="{{ url_for('currency_converter') }}" class="btn btn-primary">Go to Converter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+{% endblock %}
